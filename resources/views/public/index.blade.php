@@ -1,27 +1,24 @@
-@extends('layout.app')
+@extends('layouts.app')
 
 @section('content')
-    <h1>This is the Home Page</h1>
-
-    <h2>Sign-In with Google Template</h2>
-    
-    <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
-    
-    
-    <script>
-      function onSignIn(googleUser) {
-        // Useful data for your client-side scripts:
-        var profile = googleUser.getBasicProfile();
-        console.log("ID: " + profile.getId()); // Don't send this directly to your server!
-        console.log('Full Name: ' + profile.getName());
-        console.log('Given Name: ' + profile.getGivenName());
-        console.log('Family Name: ' + profile.getFamilyName());
-        console.log("Image URL: " + profile.getImageUrl());
-        console.log("Email: " + profile.getEmail());
-
-        // The ID token you need to pass to your backend:
-        var id_token = googleUser.getAuthResponse().id_token;
-        console.log("ID Token: " + id_token);
-      }
-    </script>
+    <div class="container">
+        <div class="row">
+            <div class="jumbotron text-center">
+                <h1>Welcome to our Micro-Services Home Page</h1>
+                <p>
+                    This project has to do with the combination of various smaller Projects
+                    that are continuously developed and implemented to form all the services 
+                    that we render, hence the name Micro-Services. Please Click on the button 
+                    below to get started with our services or learn more.
+                </p>
+                <p>
+                    <a class="btn btn-primary" href="{{route('login')}}"> Get Started </a> &nbsp;
+                    <a class="btn btn-success" href="/about-us"> Learn More </a>
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+            </div>
+        </div>
 @endsection

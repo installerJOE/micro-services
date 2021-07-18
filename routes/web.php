@@ -16,9 +16,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('public/index');
 });
+Route::get('/about-us', function(){
+    return view('public/about');
+});
 
 Route::resource('/blogs', 'App\Http\Controllers\BlogsController');
-
 
 Auth::routes();
 

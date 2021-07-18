@@ -19,3 +19,7 @@ Route::get('/', function () {
 
 Route::resource('/blogs', 'App\Http\Controllers\BlogsController');
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

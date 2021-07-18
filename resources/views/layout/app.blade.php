@@ -14,18 +14,23 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     {{-- <link  href="/path/to/cropper.css" rel="stylesheet"> --}}
     <link rel="stylesheet" href="{{asset('croppie/croppie.css')}}" />
+    
+    {{-- For Google sign-up --}}
+    <meta name="google-signin-scope" content="profile email">
+    <meta name="google-signin-client_id" content="YOUR_CLIENT_ID.apps.googleusercontent.com">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
 
     <!-- Styles -->
     {{-- <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{asset("css/style.css")}}">
     <link rel="stylesheet" href="{{asset("css/sidebar.css")}}"> --}}
-    <link rel="stylesheet" href="{{ url('public/css/app.css') }}">
-    <link rel="stylesheet" href="{{url('public/css/style.css')}}">
-    <link rel="stylesheet" href="{{url('public/css/sidebar.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="{{asset('css/style.css')}}">
+    <link rel="stylesheet" href="{{asset('css/sidebar.css')}}">
 
     {{-- Additional meta data such as title and other stylesheets --}}
     @yield('meta-content')
-    
+
     <style>
       .card{
         margin-bottom:2em;

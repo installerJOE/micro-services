@@ -14,25 +14,22 @@
                 <li class="nav-item active">
                   <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Projects Catalogue</a>
-                </li>
-                <li class="nav-item active">
-                  <a class="nav-link" href="/about-us">About Us</a>
-                </li>
                 {{-- Dropdown Menu --}}
-                 {{-- <li class="nav-item dropdown">
+                <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Products By
+                    Projects Catalogue
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="nav-link dropdown-item" href="/categories">Category</a>
-                    <a class="nav-link dropdown-item" href="#">Brand</a>
+                    <a class="nav-link dropdown-item" href="/image-upload">Image Upload Task</a>
+                    {{-- <a class="nav-link dropdown-item" href="#">Brand</a> --}}
                   </div>
-                </li>  --}}
+                </li> 
                 {{-- <li class="nav-item">
                   <a class="nav-link" href="/upload-image">Upload Image</a>
                 </li> --}}
+                <li class="nav-item active">
+                    <a class="nav-link" href="/about-us">About Us</a>
+                  </li>
                 <li class="nav-item active">
                     <a class="nav-link" href="#">Contact Us</a>
                 </li>

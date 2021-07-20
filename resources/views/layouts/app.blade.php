@@ -17,7 +17,7 @@
     <!-- Styles -->
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
-    <link rel="stylesheet" href="{{asset('croppie/croppie.css')}}" />
+    {{-- <link rel="stylesheet" href="{{asset('croppie/croppie.css')}}" /> --}}
 
     <!-- internal styles -->
     <style>
@@ -55,6 +55,6 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="{{asset('js/bootstrap.js')}}"></script>
     <script src="{{asset('js/script.js')}}"></script>
-    <script src="{{asset('croppie/croppie.js')}}"></script>
+    {{-- <script src="{{asset('croppie/croppie.js')}}"></script> --}}
 </body>
 </html>

@@ -1,9 +1,11 @@
 @extends('layouts.app')
 
+
 @section('meta-content')
-    {{-- For Google sign-up --}}
-    <meta name="google-signin-scope" content="profile email">
-    <meta name="google-signin-client_id" content="YOUR_CLIENT_ID.apps.googleusercontent.com">
+    {{-- <!-- BEGIN Pre-requisites for google oath sign-in -->
+    <script src="https://apis.google.com/js/platform.js" async defer>
+    <!-- END Pre-requisites -->
+    <meta name="google-signin-client_id" content="450131826832-r4u0md4q40cqvbf7ic5lhb2baq2lhogm.apps.googleusercontent.com"> --}}
 @endsection
 
 @section('content')
@@ -14,9 +16,10 @@
                 <div class="card-header">{{ __('Register') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
+                    <form method="POST" action="{{ route('register') }}" class="form-auth" onsubmit="return validatePassword()">
                         @csrf
 
+                        {{-- Field for name --}}
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 
@@ -31,8 +34,9 @@
                             </div>
                         </div>
 
+                        {{-- Field for email --}}
                         <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-mail Address') }}</label>
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
@@ -44,12 +48,17 @@
                                 @enderror
                             </div>
                         </div>
-
+                        
+                        {{-- Field for password  --}}
                         <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" 
+                                name="password" required autocomplete="new-password" oninput="checkPasswordLength(); passwordMatch()">
+                                <strong>
+                                    <p id="pwdStrength" style="margin-top:1em; margin-bottom:0em"></p>
+                                </strong>
 
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
@@ -59,14 +68,20 @@
                             </div>
                         </div>
 
+                        {{-- Field to retype password --}}
                         <div class="form-group row">
                             <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
 
                             <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                                <input id="password_confirm" type="password" class="form-control" name="password_confirmation" 
+                                required autocomplete="new-password" oninput="passwordMatch()">
+                                <strong>
+                                    <p id="pwdMatch" style="margin-top:1em; margin-bottom:0em"></p>
+                                </strong>
                             </div>
                         </div>
 
+                        {{-- Register button --}}
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
@@ -74,32 +89,23 @@
                                 </button>
                             </div>
                         </div>
+                        
+                        <div class="form-group row mb-0">
+                            <div class="col-md-8 offset-md-4">
+                                Already have an account? <a href="{{ route('login') }}" class="btn-link"> <b>{{ __('Login Here') }}</b></a>
+                            </div>
+                        </div>
+
+                        <div class="form-group row mb-0">
+                            @include('includes.oauth2')
+                        </div>
+
                     </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-</div><h2>Sign-In with Google Template</h2>
-    
-<div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
 @endsection
 
-<script src="https://apis.google.com/js/platform.js" async defer></script>
-<script>
-    function onSignIn(googleUser) {
-      // Useful data for your client-side scripts:
-      var profile = googleUser.getBasicProfile();
-      console.log("ID: " + profile.getId()); // Don't send this directly to your server!
-      console.log('Full Name: ' + profile.getName());
-      console.log('Given Name: ' + profile.getGivenName());
-      console.log('Family Name: ' + profile.getFamilyName());
-      console.log("Image URL: " + profile.getImageUrl());
-      console.log("Email: " + profile.getEmail());
-  
-      // The ID token you need to pass to your backend:
-      var id_token = googleUser.getAuthResponse().id_token;
-      console.log("ID Token: " + id_token);
-    }
-  </script> 
+

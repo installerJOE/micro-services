@@ -14,10 +14,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('public/index');
+    return view('public.index');
 });
 Route::get('/about-us', function(){
-    return view('public/about');
+    return view('public.about');
+});
+Route::get('/contact-us', function(){
+    return view('public.contact');
+});
+Route::get('/image-upload', function(){
+    return view('public.upload-image');
 });
 
 Route::resource('/blogs', 'App\Http\Controllers\BlogsController');

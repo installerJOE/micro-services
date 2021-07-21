@@ -25,6 +25,7 @@ Route::get('/contact-us', function(){
 Route::get('/image-upload', function(){
     return view('public.upload-image');
 });
+Route::post('/upload-image', 'App\Http\Controllers\ImageUploadsController@store');
 
 Route::resource('/blogs', 'App\Http\Controllers\BlogsController');
 
